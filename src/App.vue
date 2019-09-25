@@ -1,28 +1,32 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="square red">
+      <InnerPanel/>
+      <Door/>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import InnerPanel from "@/components/InnerPanel.vue";
+import Door from '@/components/Door.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    InnerPanel,
+    Door
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss" scoped>
+.square {
+  height: 400px;
+  width: 400px;
+  border-radius: 15px;
+  &.red {
+    background-color: red;
+  }
 }
 </style>
