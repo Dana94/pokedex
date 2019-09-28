@@ -1,5 +1,7 @@
 # pokedex
 
+> A work-in-progress. I'm using the data from the [PokeAPI](https://pokeapi.co/) and trying to enhance my CSS skills to make a pokedex where entering the name or id number receives the selected pokemon's stats.
+
 ## Project setup
 ```
 yarn install
