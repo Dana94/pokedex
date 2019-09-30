@@ -1,19 +1,25 @@
 <template>
   <div class="panel">
     <div class="side1">
-      <div class="screen"></div>
+      <div class="screen"></div>   
       <div class="inner"></div>
     </div>
     <div class="side2"></div>
-    <div class="side3"></div>
+    <div class="side3">
+      <Numpad/>
+    </div>
   </div>
 </template>
 
 <script>
+import Numpad from './Numpad.vue';
 export default {
   name: "InnerPanel",
   data() {
     return {};
+  },
+  components: {
+    Numpad
   }
 };
 </script>
