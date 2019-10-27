@@ -6,6 +6,7 @@
     </div>
     <div class="side2"></div>
     <div class="side3">
+      <input/>
       <Numpad/>
     </div>
   </div>
@@ -68,5 +69,11 @@ export default {
   width: 100%;
   grid-area: p3;
   background-color: #e21708;
+  position: relative;
+}
+
+input {
+  position: absolute;
+  right: 2rem;
 }
 </style>
