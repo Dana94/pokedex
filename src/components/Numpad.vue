@@ -1,7 +1,7 @@
 <template>
   <div class="numpad">
-    <button v-for="i in 9" :key="i.id" @click="digit(i)">{{ i }}</button>
-    <button value="0" @click="digit(0)">0</button>
+    <button v-for="i in 9" :key="i.id" @click="id = i">{{ i }}</button>
+    <button value="0" @click="id = 0">0</button>
   </div>
 </template>
 
@@ -13,9 +13,10 @@ export default {
       id: null
     };
   },
-  method: {
-    digit (num) {
-      this.id = num;
+  methods: {
+    digit (value) {
+      this.id = value;
+      alert(this.id)
     }
   }
 };
