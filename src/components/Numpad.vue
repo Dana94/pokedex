@@ -1,7 +1,8 @@
 <template>
   <div class="numpad">
-    <button v-for="i in 9" :key="i.id" @click="id = i">{{ i }}</button>
-    <button value="0" @click="id = 0">0</button>
+    <button v-for="i in 9" :key="i.id" @click="$emit('update', id += i)">{{ i }}</button>
+    <button value="0" @click="$emit('update', id += 0)" >0</button>
+    <button @click="submit" class="enter">Enter</button>
   </div>
 </template>
 
@@ -10,13 +11,16 @@ export default {
   name: "Numpad",
   data() {
     return {
-      id: null
+      id: ""
     };
   },
   methods: {
     digit (value) {
       this.id = value;
       alert(this.id)
+    },
+    submit () {
+
     }
   }
 };
@@ -32,6 +36,10 @@ export default {
   button {
     &:hover {
       cursor: pointer;
+    }
+    &.enter {
+      grid-column-start: 2;
+      grid-column-end: 4;
     }
   }
 }

@@ -6,8 +6,8 @@
     </div>
     <div class="side2"></div>
     <div class="side3">
-      <input/>
-      <Numpad/>
+      <input v-model="id"/>
+      <Numpad @update="id = $event"/>
     </div>
   </div>
 </template>
@@ -17,7 +17,9 @@ import Numpad from './Numpad.vue';
 export default {
   name: "InnerPanel",
   data() {
-    return {};
+    return {
+      id: null
+    };
   },
   components: {
     Numpad
