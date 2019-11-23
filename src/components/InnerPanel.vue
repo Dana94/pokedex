@@ -1,19 +1,28 @@
 <template>
   <div class="panel">
     <div class="side1">
-      <div class="screen"></div>
+      <div class="screen"></div>   
       <div class="inner"></div>
     </div>
     <div class="side2"></div>
-    <div class="side3"></div>
+    <div class="side3">
+      <input v-model="id"/>
+      <Numpad @update="id = $event"/>
+    </div>
   </div>
 </template>
 
 <script>
+import Numpad from './Numpad.vue';
 export default {
   name: "InnerPanel",
   data() {
-    return {};
+    return {
+      id: null
+    };
+  },
+  components: {
+    Numpad
   }
 };
 </script>
@@ -62,5 +71,11 @@ export default {
   width: 100%;
   grid-area: p3;
   background-color: #e21708;
+  position: relative;
+}
+
+input {
+  position: absolute;
+  right: 2rem;
 }
 </style>
