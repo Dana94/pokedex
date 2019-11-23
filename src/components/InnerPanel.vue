@@ -1,28 +1,44 @@
 <template>
   <div class="panel">
     <div class="side1">
+      <Light/>
       <div class="screen"></div>   
       <div class="inner"></div>
+      
     </div>
-    <div class="side2"></div>
+    <div class="side2">
+      
+    </div>
     <div class="side3">
-      <input v-model="id"/>
+      <input v-model="entered"/>
       <Numpad @update="id = $event"/>
+      <Keyboard @update="name = $event"/>
     </div>
   </div>
 </template>
 
 <script>
+import Light from './Light.vue';
 import Numpad from './Numpad.vue';
+import Keyboard from './Keyboard.vue';
+
 export default {
   name: "InnerPanel",
   data() {
     return {
-      id: null
+      id: '',
+      name: ''
     };
   },
   components: {
-    Numpad
+    Light,
+    Numpad,
+    Keyboard
+  },
+  computed: {
+    entered () {
+      return this.id + this.name;
+    }
   }
 };
 </script>
