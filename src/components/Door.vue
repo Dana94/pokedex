@@ -47,7 +47,7 @@ export default {
   }
 
   .side1 {
-    height: 318px;
+    height: 418px;
     border-top: 50px solid transparent;
     width: 100%;
     grid-area: col1;

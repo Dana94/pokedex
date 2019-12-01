@@ -17,7 +17,7 @@ export default {
 <style lang="scss" scoped>
 .keyboard {
     position: absolute;
-    bottom: 0;
+    bottom: 1rem;
     right: 2rem;
     display: grid;
     grid-template-columns: repeat(7, 30px);
