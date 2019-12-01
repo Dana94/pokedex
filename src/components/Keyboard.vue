@@ -20,8 +20,12 @@ export default {
     bottom: 1rem;
     right: 2rem;
     display: grid;
-    grid-template-columns: repeat(7, 30px);
-    grid-gap: 20px;
+    grid-template-columns: repeat(7, 40px);
+    grid-gap: 10px;
+
+    button {
+        padding: .5rem;
+    }
     
 }
 </style>

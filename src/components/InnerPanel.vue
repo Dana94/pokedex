@@ -70,7 +70,7 @@ export default {
     background-color: grey;
     position: absolute;
     top: 4rem;
-    left: 20px;
+    left: 28px;
   }
 
   .inner {
