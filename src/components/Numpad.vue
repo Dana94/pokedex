@@ -11,7 +11,7 @@ export default {
   name: "Numpad",
   data() {
     return {
-      id: ""
+      id: ''
     };
   },
   methods: {
@@ -31,7 +31,7 @@ export default {
   grid-template-columns: 50px 50px 50px;
   grid-gap: 10px;
   position: absolute;
-  top: 3rem;
+  top: 6rem;
   right: 2rem;
   button {
     &:hover {

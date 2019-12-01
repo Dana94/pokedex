@@ -22,7 +22,7 @@ export default {
 
 <style lang="scss" scoped>
 .square {
-  height: 400px;
+  height: 500px;
   width: 400px;
   border-radius: 15px;
   &.red {

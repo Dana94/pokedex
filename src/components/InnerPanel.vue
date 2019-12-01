@@ -1,28 +1,49 @@
 <template>
   <div class="panel">
     <div class="side1">
+      <Light/>
       <div class="screen"></div>   
       <div class="inner"></div>
+      
     </div>
-    <div class="side2"></div>
+    <div class="side2">
+      
+    </div>
     <div class="side3">
-      <input v-model="id"/>
+      <select id="type-select">
+        <option value="">--Please choose an input type--</option>
+        <option value="name">Name</option>
+        <option value="id">ID</option>
+      </select>
+      <input v-model="entered"/>
       <Numpad @update="id = $event"/>
+      <Keyboard @update="name = $event"/>
     </div>
   </div>
 </template>
 
 <script>
+import Light from './Light.vue';
 import Numpad from './Numpad.vue';
+import Keyboard from './Keyboard.vue';
+
 export default {
   name: "InnerPanel",
   data() {
     return {
-      id: null
+      id: '',
+      name: ''
     };
   },
   components: {
-    Numpad
+    Light,
+    Numpad,
+    Keyboard
+  },
+  computed: {
+    entered () {
+      return this.id + this.name;
+    }
   }
 };
 </script>
@@ -48,8 +69,8 @@ export default {
     width: 140px;
     background-color: grey;
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 4rem;
+    left: 28px;
   }
 
   .inner {
@@ -66,7 +87,7 @@ export default {
 }
 
 .side3 {
-  height: 318px;
+  height: 418px;
   border-top: 50px solid transparent;
   width: 100%;
   grid-area: p3;
@@ -77,5 +98,12 @@ export default {
 input {
   position: absolute;
   right: 2rem;
+  top: 3rem;
+}
+
+#type-select {
+  position: absolute;
+  right: 2rem;
+  width: 10.8rem;
 }
 </style>
