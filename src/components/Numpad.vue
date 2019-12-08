@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import { instance } from '../axios-auth';
+
 export default {
   name: "Numpad",
   data() {
@@ -17,10 +19,14 @@ export default {
   methods: {
     digit (value) {
       this.id = value;
-      alert(this.id)
     },
     submit () {
-
+      instance.get('pokemon/' + this.id)
+      .then(res => {
+        console.log(res);
+        this.$store.commit('SET_POKEMON', { data: res.data, })
+      })
+      .catch(error => console.log(error))
     }
   }
 };
