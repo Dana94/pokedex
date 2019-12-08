@@ -24,6 +24,7 @@ export default {
       instance.get('pokemon/' + this.id)
       .then(res => {
         console.log(res);
+        this.$store.commit('SET_POKEMON', { data: res.data, })
       })
       .catch(error => console.log(error))
     }

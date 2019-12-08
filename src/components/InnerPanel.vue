@@ -2,7 +2,7 @@
   <div class="panel">
     <div class="side1">
       <Light/>
-      <div class="screen"></div>   
+      <div class="screen" :style="{backgroundImage: `url(${imageSrc})`}"></div>   
       <div class="inner"></div>
       
     </div>
@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       id: '',
-      name: ''
+      name: '',
     };
   },
   components: {
@@ -43,6 +43,10 @@ export default {
   computed: {
     entered () {
       return this.id + this.name;
+    },
+    imageSrc () {
+      if (!this.$store.getters.isData) return;
+      return this.$store.getters.getImage;
     }
   }
 };
@@ -71,6 +75,8 @@ export default {
     position: absolute;
     top: 4rem;
     left: 28px;
+
+    background-repeat: no-repeat;
   }
 
   .inner {
