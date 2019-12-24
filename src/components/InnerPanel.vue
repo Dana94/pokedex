@@ -10,19 +10,25 @@
       
     </div>
     <div class="side3">
-      <select id="type-select">
-        <option value="">--Please choose an input type--</option>
+      <select id="type-select" v-model="inputType">
+        <option value="none">--Please choose an input type--</option>
         <option value="name">Name</option>
         <option value="id">ID</option>
       </select>
+      <div class="change-buttons">
+        <button @click="clear" class="">Clear</button>
+        <button @click="submit" class="enter">Enter</button>
+      </div>
       <input v-model="entered"/>
-      <Numpad @update="id = $event"/>
-      <Keyboard @update="name = $event"/>
+      <Numpad @update="id = $event" :disable="inputType !== 'id'"/>
+      <Keyboard @update="name = $event" :disable="inputType !== 'name'"/>
     </div>
   </div>
 </template>
 
 <script>
+import { instance } from '../axios-auth';
+
 import Light from './Light.vue';
 import Numpad from './Numpad.vue';
 import Keyboard from './Keyboard.vue';
@@ -33,6 +39,7 @@ export default {
     return {
       id: '',
       name: '',
+      inputType: 'none'
     };
   },
   components: {
@@ -47,6 +54,20 @@ export default {
     imageSrc () {
       if (!this.$store.getters.isData) return;
       return this.$store.getters.getImage;
+    }
+  },
+  methods: {
+    submit () {
+      // console.log(`pokemon/${this.id ? this.id : this.name}`)
+      instance.get(`pokemon/${this.id ? this.id : this.name}`)
+      .then(res => {
+        this.$store.commit('SET_POKEMON', { data: res.data, })
+      })
+      .catch(error => console.error(error))
+    },
+    clear () {
+      this.id = '';
+      this.name = '';
     }
   }
 };
@@ -77,6 +98,7 @@ export default {
     left: 28px;
 
     background-repeat: no-repeat;
+    background-position: center;
   }
 
   .inner {
@@ -104,12 +126,29 @@ export default {
 input {
   position: absolute;
   right: 2rem;
-  top: 3rem;
+  top: 1.5rem;
 }
 
 #type-select {
   position: absolute;
   right: 2rem;
   width: 10.8rem;
+}
+
+.enter {
+  // position: absolute;
+  // bottom: 1rem;
+  height: 2.2rem;
+  // left: .6rem;
+  width: 5.8rem; /* just eye-balled this... */
+}
+
+.change-buttons {
+  position: absolute;
+  top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 1rem;
+  right: 2rem;
 }
 </style>

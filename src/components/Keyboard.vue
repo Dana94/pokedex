@@ -1,15 +1,16 @@
 <template>
     <div class="keyboard">
-        <button class="" v-for="letter in alphabet" :key="letter.id" @click="$emit('update', name += letter)">{{ letter }}</button>
+        <button class="" v-for="letter in alphabet" :key="letter.id" @click="$emit('update', name += letter)" :disabled="disable">{{ letter }}</button>
     </div>
 </template>
 <script>
 export default {
     name: "Keyboard",
+    props: {disable: { type: Boolean, required: true}},
     data () {
         return {
             name: '',
-            alphabet: ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+            alphabet: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
         }
     }
 }

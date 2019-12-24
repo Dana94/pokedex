@@ -1,16 +1,14 @@
 <template>
   <div class="numpad">
-    <button v-for="i in 9" :key="i.id" @click="$emit('update', id += i)">{{ i }}</button>
-    <button value="0" @click="$emit('update', id += 0)" >0</button>
-    <button @click="submit" class="enter">Enter</button>
+    <button v-for="i in 9" :key="i.id" @click="$emit('update', id += i)" :disabled="disable">{{ i }}</button>
+    <button value="0" @click="$emit('update', id += 0)" :disabled="disable">0</button>
   </div>
 </template>
 
 <script>
-import { instance } from '../axios-auth';
-
 export default {
   name: "Numpad",
+  props: {disable: { type: Boolean, required: true}},
   data() {
     return {
       id: ''
@@ -19,14 +17,6 @@ export default {
   methods: {
     digit (value) {
       this.id = value;
-    },
-    submit () {
-      instance.get('pokemon/' + this.id)
-      .then(res => {
-        console.log(res);
-        this.$store.commit('SET_POKEMON', { data: res.data, })
-      })
-      .catch(error => console.log(error))
     }
   }
 };
@@ -42,10 +32,6 @@ export default {
   button {
     &:hover {
       cursor: pointer;
-    }
-    &.enter {
-      grid-column-start: 2;
-      grid-column-end: 4;
     }
   }
 }
