@@ -81,6 +81,10 @@ export default {
   background-color: yellow;
   right: 10px;
 
+  & :hover {
+    cursor: pointer;
+  }
+
   .button {
     height: 0;
     border-top: 15px solid transparent;
