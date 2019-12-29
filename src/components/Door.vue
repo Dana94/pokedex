@@ -3,7 +3,11 @@
     <div class="latch" @click="openDoor">
       <div class="button"></div>
     </div>
-    <div class="side1"></div>
+    <div class="side1">
+      <div class="screen">
+
+      </div>
+    </div>
     <div class="side2"></div>
     <div class="side3">
       <div class="inner"></div>
@@ -44,6 +48,10 @@ export default {
 
   &.open {
     animation: open 2s cubic-bezier(0.64, 0.76, 0.2, 1) forwards;
+
+    .screen {
+      animation: flip 2s cubic-bezier(0.64, 0.76, 0.2, 1) forwards;
+    }
   }
 
   .side1 {
@@ -53,6 +61,18 @@ export default {
     grid-area: col1;
     background-color: #e21708;
     border-left: 1px solid;
+
+    .screen {
+      height: 300px;
+      width: 300px;
+      background-color: grey;
+      position: absolute;
+      top: 6rem;
+      left: 28px;
+
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
   }
 
   .side2 {
@@ -102,6 +122,15 @@ export default {
   }
   100% {
     transform: translateX(400px);
+  }
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(0deg);
   }
 }
 </style>

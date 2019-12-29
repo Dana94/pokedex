@@ -19,7 +19,7 @@
         <button @click="clear" class="">Clear</button>
         <button @click="submit" class="enter">Enter</button>
       </div>
-      <input v-model="entered"/>
+      <input v-model="entered" :disabled="inputType === 'none'"/>
       <Numpad @update="id = $event" :disable="inputType !== 'id'"/>
       <Keyboard @update="name = $event" :disable="inputType !== 'name'"/>
     </div>
@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     entered () {
-      return this.id + this.name;
+      return this.id ? this.id : this.name;
     },
     imageSrc () {
       if (!this.$store.getters.isData) return;
@@ -58,7 +58,6 @@ export default {
   },
   methods: {
     submit () {
-      // console.log(`pokemon/${this.id ? this.id : this.name}`)
       instance.get(`pokemon/${this.id ? this.id : this.name}`)
       .then(res => {
         this.$store.commit('SET_POKEMON', { data: res.data, })
@@ -99,6 +98,7 @@ export default {
 
     background-repeat: no-repeat;
     background-position: center;
+    background-size: contain;
   }
 
   .inner {

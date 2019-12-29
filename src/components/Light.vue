@@ -1,7 +1,6 @@
 <template>
     <div class="light">
         <div class="bulb">
-
         </div>
     </div>
 </template>
